@@ -1,12 +1,28 @@
-<section>
-  <h1>{{ title }}</h1>
-  <form>
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required>
-
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
-
-    <button type="submit">Login</button>
-  </form>
+<section class="grid grid-cols-2 h-full">
+  <div class="bg-primary-500"></div>
+  <div class="flex items-center justify-center">
+  <mat-card class="w-[60%] p-4 text-center text-4xl">
+   <h1>Bienvenido</h1>
+    <mat-card-content>
+      <form [formGroup]="loginForm">
+              <mat-form-field appearance="fill" class="w-full">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" type="email" formControlName="email">
+        <mat-error *ngIf="loginForm.get('email')?.hasError('required')">El email es requerido</mat-error>
+        <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Email no válido</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>Contraseña</mat-label>
+        <input matInput placeholder="Contraseña" type="password" formControlName="password">
+        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">La contraseña es requerida</mat-error>
+      </mat-form-field>
+          <app-button
+    [text]="'Iniciar Sesión'"
+    [callback]="login"
+    [disabled]="loginForm.invalid"
+    ></app-button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  </div>
 </section>

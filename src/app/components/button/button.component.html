@@ -1,0 +1,6 @@
+<button (click)="handleClick()" class="h-[44px] w-[90%] text-[16px] bg-primary-500 hover:bg-primary-600 px-1 text-white text-center rounded-lg"
+    [ngClass]="{'cursor-not-allowed': disabled, 'opacity-50': disabled}" 
+
+[disabled]="disabled">
+    {{ text }}
+</button>
